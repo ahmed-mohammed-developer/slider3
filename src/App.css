@@ -1,0 +1,9 @@
+.dark {
+    background-color: black !important;
+    color: antiquewhite !important;
+    padding: 5px !important;
+}
+.btn-light {
+    background-color: antiquewhite;
+    color: black;
+}
