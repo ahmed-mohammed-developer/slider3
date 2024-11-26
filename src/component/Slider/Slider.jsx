@@ -1,44 +1,52 @@
-import './slider.css'
-import React,{useState} from 'react'
-import SliderComp from './SliderComp'
-import Title from '../Title'
+import './slider.css'; // استيراد ملف الأنماط
+import React, { useState } from 'react'; // استيراد React واستخدام hook useState
+import SliderComp from './SliderComp'; // استيراد مكون SliderComp
+import Title from '../Title'; // استيراد مكون Title
 
 function Slider() {
-    const [siledValue, setSiledValue] = useState(0)
+    const [siledValue, setSiledValue] = useState(0); // تعريف حالة للسلايدر وتعيين القيمة الابتدائية إلى 0
 
+    // دالة لمعالجة تغيرات قيمة السلايدر
     const handleSilderValueChange = (e) => {
-        setSiledValue(e.target.value)
-    }
+        setSiledValue(e.target.value); // تحديث قيمة السلايدر عند تغييرها
+    };
 
-    let bgColor;
-    let textColor;
+    let bgColor; // متغير لتحديد لون الخلفية
+    let textColor; // متغير لتحديد لون النص
 
-    if(siledValue < 25 ){
+    // تعيين ألوان الخلفية والنص بناءً على قيمة السلايدر
+    if (siledValue < 25) {
         bgColor = "red";
-        textColor  = "red";
+        textColor = "red";
     }
-    
-    if(siledValue < 25 && siledValue <= 50 ){
+
+    if (siledValue >= 25 && siledValue <= 50) {
         bgColor = "blue";
     }
-    if(siledValue > 51 && siledValue <= 75 ){
+    if (siledValue > 51 && siledValue <= 75) {
         bgColor = "green";
-        textColor  = "white";
+        textColor = "white";
     }
-    if(siledValue > 75 ){
+    if (siledValue > 75) {
         bgColor = "orange";
-        textColor  = "white";
+        textColor = "white";
     }
-    if(siledValue == 100 ){
+    if (siledValue === 100) {
         bgColor = "blue";
-        textColor  = "white";
+        textColor = "white";
     }
-  return (
-    <div className='container text-center'>
-        <Title text={"Slider To Grow"} className='mt-5 mb-4'/>
-        <SliderComp setValue={siledValue} handleInput={handleSilderValueChange} bgColor={bgColor} textColor={textColor}/>
-    </div>
-  )
+
+    return (
+        <div className='container text-center'>
+            <Title text={"Slider To Grow"} className='mt-5 mb-4'/> {/* عرض عنوان */}
+            <SliderComp 
+                setValue={siledValue} 
+                handleInput={handleSilderValueChange} 
+                bgColor={bgColor} 
+                textColor={textColor}
+            /> {/* عرض مكون SliderComp مع تمرير الخصائص */}
+        </div>
+    );
 }
 
-export default Slider
+export default Slider; // تصدير مكون Slider
